@@ -1,11 +1,13 @@
-# Undabot assignment
+# Symfony 5 REST API + Docker
+
+Symfony skeleton for REST API application run in docker environment. Make sure you install docker on your machine beforehand (the setup process is not covered here).
+
+> **NOTICE:** `docker-compose.yml` is set up for MacOS so it might need adjustments when running on different OS.
 
 ## Project environment
 - Symfony 5
 - PHP 7.4
 - MySQL
-
-The project is meant to be run in docker environment, so make sure you install docker on your machine beforehand (the setup process is not covered here).
 
 ## Project setup
 

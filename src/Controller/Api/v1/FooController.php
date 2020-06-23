@@ -73,8 +73,7 @@ class FooController extends BaseController
         }
 
         $data = [
-            'title' => $title,
-//            'score' => $providerStrategyManager->handle(Provider::GITHUB, $term)
+            'title' => $title
         ];
 
         /** @var Foo $foo */
