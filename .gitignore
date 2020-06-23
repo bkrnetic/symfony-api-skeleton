@@ -1,5 +1,7 @@
 
 ###> symfony/framework-bundle ###
+/.DS_Store
+/.env
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -7,4 +9,11 @@
 /public/bundles/
 /var/
 /vendor/
+.idea
+.docker-config/logs/*
+!.docker-config/logs/.gitkeep
+.docker-config/database/data/*
+!.docker-config/database/data/.gitkeep
+.docker-config/.DS_Store
+.docker-config/database/.DS_Store
 ###< symfony/framework-bundle ###

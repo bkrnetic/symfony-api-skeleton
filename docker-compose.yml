@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  database:
+    build:
+      context: .docker-config/database
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      - MYSQL_DATABASE=${DATABASE_NAME}
+      - MYSQL_USER=${DATABASE_USER}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./.docker-config/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./.docker-config/database/data:/var/lib/mysql
+
+  web:
+    build:
+      context: .docker-config/php-fpm
+    depends_on:
+      - database
+    environment:
+      - APP_ENV=${APP_ENV}
+      - APP_SECRET=${APP_SECRET}
+      - DATABASE_URL=mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@database:3306/${DATABASE_NAME}
+    volumes:
+      - ./:/var/www
+      - ./.docker-config/php-fpm/php.ini:/usr/local/etc/php/php.ini
+      # Uncomment the following line to enable xdebug
+      - ./.docker-config/php-fpm/php-xdebug-phpstorm.ini:/usr/local/etc/php/conf.d/xdebug-settings.ini
+
+  nginx:
+    build:
+      context: .docker-config/nginx
+    volumes:
+      - ./:/var/www
+      - ./.docker-config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./.docker-config/nginx/sites/:/etc/nginx/sites-available
+      - ./.docker-config/nginx/conf.d/:/etc/nginx/conf.d
+      - ./.docker-config/logs:/var/log
+    depends_on:
+      - web
+    ports:
+      - "80:80"
+      - "443:443"

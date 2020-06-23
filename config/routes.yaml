@@ -1,3 +1,4 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /api/v1/foo
+    controller: App\Controller\Api\v1\FooController::index
+    methods: GET
