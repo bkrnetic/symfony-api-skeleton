@@ -59,4 +59,6 @@ bin/console doctrine:migrations:migrate
 > 
 >For more on DoctrineMigrationsBundle, check the following [link](https://symfony.com/doc/master/bundles/DoctrineMigrationsBundle/index.html).
 
+## Testing
 
+Navigate to your localhost followed by `/api/docs` (e.g. `localhost/api/docs`) and test the application using Swagger or try `/api/v1/foo?title=sample`.
