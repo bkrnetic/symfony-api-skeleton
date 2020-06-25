@@ -16,5 +16,5 @@
 !.docker-config/database/data/.gitkeep
 .docker-config/.DS_Store
 .docker-config/database/.DS_Store
-
+#phpstan.neon.dist
 ###< symfony/framework-bundle ###
