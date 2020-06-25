@@ -16,4 +16,5 @@
 !.docker-config/database/data/.gitkeep
 .docker-config/.DS_Store
 .docker-config/database/.DS_Store
+
 ###< symfony/framework-bundle ###

@@ -4,5 +4,5 @@ namespace App\Entity;
 
 interface EntityInterface
 {
-    public function getId();
+    public function getId(): ?int;
 }

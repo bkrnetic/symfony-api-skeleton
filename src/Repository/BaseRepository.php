@@ -23,7 +23,7 @@ abstract class BaseRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function save(EntityInterface $entity, $flush = true)
+    public function save(EntityInterface $entity, $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -61,7 +61,7 @@ abstract class BaseRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(EntityInterface $entity, $flush = true)
+    public function remove(EntityInterface $entity, $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -74,13 +74,14 @@ abstract class BaseRepository extends ServiceEntityRepository
      *
      * @param int $id
      * @throws NotFoundHttpException when resource is not found or doesn't exist
-     * @return EntityInterface|mixed
+     * @return EntityInterface
      */
     public function findOr404($id) : EntityInterface
     {
+        /** @var EntityInterface $entity */
         $entity = $this->find($id);
 
-        if (!$entity) {
+        if (!$entity instanceof EntityInterface) {
             try {
                 $entityName = str_replace('Repository', '', array_values(array_slice(explode("\\", get_class($this)), -1))[0]);
             } catch (Exception $e) {

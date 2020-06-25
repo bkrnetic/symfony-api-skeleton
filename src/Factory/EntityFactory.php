@@ -14,8 +14,8 @@ use function is_array;
 
 class EntityFactory
 {
-    private $serializer;
-    private $validator;
+    private SerializerInterface $serializer;
+    private ValidatorService $validator;
 
     public function __construct(
         SerializerInterface $serializer,
@@ -27,7 +27,7 @@ class EntityFactory
     }
 
     /**
-     * @param $data
+     * @param mixed $data
      * @param string $class
      * @param array $groups
      * @param array $context

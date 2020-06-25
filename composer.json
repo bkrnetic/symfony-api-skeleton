@@ -22,6 +22,7 @@
         "symfony/yaml": "5.1.*"
     },
     "require-dev": {
+        "phpstan/phpstan": "^0.12.31",
         "symfony/maker-bundle": "^1.19"
     },
     "config": {
