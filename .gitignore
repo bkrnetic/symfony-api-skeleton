@@ -10,8 +10,9 @@
 /var/
 /vendor/
 .idea
-.docker-config/logs/*
+.docker-config/logs/nginx/*
 !.docker-config/logs/.gitkeep
+!.docker-config/logs/nginx/.gitkeep
 .docker-config/database/data/*
 !.docker-config/database/data/.gitkeep
 .docker-config/.DS_Store
